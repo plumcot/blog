@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar">
+  <header class="navbar" style="position: relative;background: none rgba(0, 0, 0, 0.2);box-shadow: none;">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
 
     <router-link
