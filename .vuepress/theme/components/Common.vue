@@ -13,10 +13,10 @@
       </transition>
       <div :class="{ 'hide': firstLoad || !isHasKey }">
         <div v-if="all" class="wrapper-main" :style="{
-          backgroundImage: 'url('+cover+')',
+          backgroundImage: 'url('+backgroundPicture+')',
           backgroundPositionX: 'center',
           backgroundPositionY: 'center',
-          backgroundSize: 'cover',
+          backgroundSize: 'backgroundPicture',
           backgroundRepeatX: 'no-repeat',
           backgroundRepeatY: 'no-repeat'}">
           <Navbar
@@ -152,16 +152,14 @@
         isSidebarOpen: false,
         isHasKey: true,
         isHasPageKey: true,
-        firstLoad: true
+        firstLoad: true,
+        backgroundPicture: ''
       }
     },
 
     computed: {
       absoluteEncryption() {
         return this.$themeConfig.keyPage && this.$themeConfig.keyPage.absoluteEncryption === true
-      },
-      cover() {
-        return this.$themeConfig.covers[new Date().getDay()] || "https://pan.zealsay.com/zealsay/cover/1.jpg"
       },
       pageCover() {
         return this.$page.frontmatter.cover || this.$themeConfig.covers[new Date().getDay()] || "https://pan.zealsay.com/zealsay/cover/1.jpg"
@@ -211,11 +209,11 @@
     mounted() {
       this.$router.afterEach(() => {
         this.isSidebarOpen = false
-      })
-
+      });
       this.hasKey()
       this.hasPageKey()
       this.handleLoading()
+      this.cover();
       circleMagic({
         radius: 15,
         density: 0.3,
@@ -224,8 +222,17 @@
         clearOffset: 0.2
       })
     },
-
     methods: {
+      cover() {
+          this.$axios.get('/bing/HPImageArchive.aspx?format=js&idx=0&n=1').then(res => {
+            console.log(res);
+            this.backgroundPicture = 'https://cn.bing.com' + res.data.images[0].url;
+            console.log(this.backgroundPicture)
+          }).catch(error => {
+            console.log(error)
+            this.backgroundPicture = this.$themeConfig.covers[new Date().getDay()] || "https://pan.zealsay.com/zealsay/cover/1.jpg"
+          })
+      },
       hasKey() {
         const keyPage = this.$themeConfig.keyPage
         if (!keyPage || !keyPage.keys || keyPage.keys.length === 0) {

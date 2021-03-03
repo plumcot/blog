@@ -3,13 +3,19 @@ import localMixin from '@theme/mixins/locales'
 import { addLinkToHead } from '@theme/helpers/utils'
 import { registerCodeThemeCss } from '@theme/helpers/other'
 
+import axios from 'axios'
+
+
 export default ({
   Vue,
   siteData,
   isServer
 }) => {
-  Vue.mixin(postMixin)
-  Vue.mixin(localMixin)
+  Vue.mixin(postMixin);
+  Vue.mixin(localMixin);
+  Vue.prototype.$axios = axios;
+
+
   if (!isServer) {
     addLinkToHead('//at.alicdn.com/t/font_1030519_2ciwdtb4x65.css')
     registerCodeThemeCss(siteData.themeConfig.codeTheme)

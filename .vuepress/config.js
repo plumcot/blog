@@ -71,12 +71,6 @@ module.exports = {
                 "link": "https://blog.zealsay.com"
             },
             {
-                "title": "另一个博客",
-                "desc": "vuepress_blog",
-                "logo": "https://pan.zealsay.com/blog/logo.png",
-                "link": "https://www.zealsay.com"
-            },
-            {
                 "title": "午后南杂",
                 "desc": "Enjoy when you can, and endure when you must.",
                 "logo": "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
@@ -90,19 +84,21 @@ module.exports = {
             }
         ],
         "valineConfig": {
-            "appId": "xxx",// your appId
-            "appKey": "xxx", // your appKey
+            "appId": "LVsgxsL3e7scdUrYsMEbLz5i-gzGzoHsz",// your appId
+            "appKey": "tCw25P6ucwIsd3Jrd0GwvUSv", // your appKey
             "avatar": "", //
             "enableQQ": true, //启用昵称框自动获取QQ昵称和QQ头像
             "requiredFields": ['nick', 'mail'], //设置必填项
         },
-        "logo": "/logo.png",
+        // "logo": "/logo.png",
+        "logo": "https://tva1.sinaimg.cn/large/e6c9d24ely1go6gkxv8keg2050050mx9.gif",
         // "huawei": true, //首页出现华为文案
         "search": true,
         "searchMaxSuggestions": 10,
         "lastUpdated": "Last Updated",
         "author": "侯春宇",
-        "authorAvatar": "/avatar.png",
+        // "authorAvatar": "/avatar.png",
+        "authorAvatar": "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
         // "record": "你的备案号 ", //icp备案
         "startYear": "2017",
         "info": "这家伙不懒，也只留下了一句话。",
@@ -161,13 +157,26 @@ module.exports = {
     "markdown": {
         "lineNumbers": false
     },
-    // configureWebpack: (config, isServer) => {
-    //   if (!isServer) {
-    //     // 修改客户端的 webpack 配置
-    //     config.output.publicPath = config.mode === 'production'
-    //       ? 'https://pan.zealsay.com/blog/' // sample/essays 打包的默认路径为 ‘_nuxt’ 或者可以指定cdn 域名
-    //       : '/';
-    //     config.output.filename = "assets/js/[name].js";
-    //   }
-    // }
+    devServer : {
+        proxy: {
+            '/bing/': {
+                target: 'https://cn.bing.com/', //接口域名
+                changeOrigin: true,             //是否跨域
+                ws: true,                       //是否代理 websockets
+                secure: true,                   //是否https接口
+                pathRewrite: {                  //路径重置
+                    '^/bing/': ''
+                }
+            },
+            '/ciba/': {
+                target: 'http://open.iciba.com/', //接口域名
+                changeOrigin: true,             //是否跨域
+                ws: true,                       //是否代理 websockets
+                secure: true,                   //是否https接口
+                pathRewrite: {                  //路径重置
+                    '^/ciba/': ''
+                }
+            },
+        }
+    }
 }

@@ -51,7 +51,6 @@ import Common from '@theme/components/Common'
 import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
-
 export default {
   name: 'About',
   mixins: [moduleTransitonMixin],

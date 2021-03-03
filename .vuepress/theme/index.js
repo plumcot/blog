@@ -9,7 +9,7 @@ module.exports = (options, ctx) => ({
       themeConfig.algolia ||
       Object.keys(siteConfig.locales && themeConfig.locales || {})
         .some(base => themeConfig.locales[base].algolia)
-    )
+    );
     return {
       '@AlgoliaSearchBox': isAlgoliaSearch
         ? path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
@@ -102,4 +102,4 @@ module.exports = (options, ctx) => ({
       }
     }]
   ]
-})
+});
