@@ -224,7 +224,7 @@
     },
     methods: {
       cover() {
-          this.$axios.get('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1').then(res => {
+          this.$axios.get('https://bird.ioliu.cn/v1?url=http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1').then(res => {
             console.log(res);
             this.backgroundPicture = 'https://cn.bing.com' + res.data.images[0].url;
             console.log(this.backgroundPicture)
