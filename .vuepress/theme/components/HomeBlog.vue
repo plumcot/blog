@@ -138,7 +138,7 @@
         },
         methods: {
             motto() {
-                this.$axios.get('/ciba/dsapi/').then(res => {
+                this.$axios.get('ciba/dsapi/').then(res => {
                     console.log(res);
                     this.zh = res.data.note;
                     this.en = res.data.content
