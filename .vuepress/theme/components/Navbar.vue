@@ -112,9 +112,9 @@ $navbar-horizontal-padding = 1.5rem
 
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
-  line-height $navbarHeight + 1.4rem
-  // box-shadow var(--box-shadow)
-  // background var(--background-color)google-fonts.scss
+  //line-height $navbarHeight + 1.4rem;
+   //box-shadow var(--box-shadow)
+   //background var(--background-color)google-fonts.scss
   a, span, img
     display inline-block
   .home-link
@@ -143,8 +143,11 @@ $navbar-horizontal-padding = 1.5rem
     // background-color var(--background-color)
     .search-box
       flex: 0 0 auto
-      vertical-align top
+      /*vertical-align top*/
+      line-height: 2.2rem;
       color white
+      .iconfont
+        font-size:16px;
 
 @media (max-width: $MQMobile)
   .navbar

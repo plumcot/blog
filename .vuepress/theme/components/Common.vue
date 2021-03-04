@@ -162,7 +162,10 @@
         return this.$themeConfig.keyPage && this.$themeConfig.keyPage.absoluteEncryption === true
       },
       pageCover() {
-        return this.$page.frontmatter.cover || this.$themeConfig.covers[new Date().getDay()] || "https://pan.zealsay.com/zealsay/cover/1.jpg"
+        const genRandom = (min, max) => (Math.random() * (max - min + 1) | 0) + min;
+        return this.$page.frontmatter.cover
+                || 'https://zyj_yida.gitee.io/source/img/indexbg/' + genRandom(1, 52) + '.jpg'
+                || "https://pan.zealsay.com/zealsay/cover/1.jpg"
       },
       shouldShowNavbar() {
         const {themeConfig} = this.$site
@@ -225,11 +228,8 @@
     methods: {
       cover() {
           this.$axios.get('https://bird.ioliu.cn/v1?url=http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1').then(res => {
-            console.log(res);
             this.backgroundPicture = 'https://cn.bing.com' + res.data.images[0].url;
-            console.log(this.backgroundPicture)
           }).catch(error => {
-            console.log(error)
             this.backgroundPicture = this.$themeConfig.covers[new Date().getDay()] || "https://pan.zealsay.com/zealsay/cover/1.jpg"
           })
       },

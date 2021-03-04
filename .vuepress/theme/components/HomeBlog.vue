@@ -13,14 +13,14 @@
                 </ModuleTransition>
 
                 <ModuleTransition delay="0.04" duration="0.5">
-                    <h1 v-if="recoShowModule && $frontmatter.heroText !== null" class="longcang">
-                        {{ zh || $frontmatter.heroText || $title || 'zealsay' }}
+                    <h1 v-if="recoShowModule && zh" class="longcang">
+                        {{ zh }}
                     </h1>
                 </ModuleTransition>
 
                 <ModuleTransition delay="0.08" duration="0.5">
-                    <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
-                        {{ en || $frontmatter.tagline || $description || 'Welcome to your zealsay site' }}
+                    <p v-if="recoShowModule && en " class="description">
+                        {{ en }}
                     </p>
                 </ModuleTransition>
 
@@ -88,8 +88,8 @@
                 recoShow: false,
                 currentPage: 1,
                 tags: [],
-                zh: 'aa',
-                en: 'bb'
+                zh: '',
+                en: ''
             }
         },
         computed: {
@@ -139,12 +139,11 @@
         methods: {
             motto() {
                 this.$axios.get('https://bird.ioliu.cn/v1?url=http://open.iciba.com/dsapi/').then(res => {
-                    console.log(res);
                     this.zh = res.data.note;
                     this.en = res.data.content
                 }).catch(error => {
                     console.log(error);
-                    let res = this.$themeConfig.mottos[new Date().getDay()] || {
+                    let res = {
                         "zh": "愿你保持初心和善良,笑里尽是温暖与坦荡。",
                         "en": "May you keep your original heart and kindness, and smile with warmth and magnanimity."
                     };

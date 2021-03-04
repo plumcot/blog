@@ -1,19 +1,15 @@
 ---
-title: 第一篇博客
-date: 2020-08-31
-cover: https://pan.zealsay.com/mweb/blog/WechatIMG11.png
+title: Hello World
+date: 2020-03-05 21:49:56
 tags:
- - java
+ - Hello World
 categories:
- -  技术笔记
-sticky: 1
+ -  随笔
 ---
-
-::: tip 介绍
-使用vuepress_blog搭建的第一篇博客<br>
-:::
-
 <!-- more -->
+
+看到这个主题的第一眼就爱上了它，感觉距离拥有自己的"博客"也终于进了一步~
+
 
 
 ## 这里是标题
@@ -27,4 +23,3 @@ public class Demo {
     System.out.println("Hello World!");
   }
 }	
-

@@ -17,7 +17,7 @@
           @focus="inputFocus"
           @blur="inputBlur">
         <span>{{warningText}}</span>
-        <button ref="passwordBtn" @click="inter">OK</button>
+        <button ref="passwordBtn" @click="inter">确认</button>
       </label>
     </ModuleTransition>
 
@@ -82,11 +82,11 @@ export default {
       sessionStorage.setItem(keyName, keyVal)
       const isKeyTrue = isPage ? isHasPageKey() : isHasKey()
       if (!isKeyTrue) {
-        this.warningText = 'Key Error'
+        this.warningText = '没对上~'
         return
       }
 
-      this.warningText = 'Key Success'
+      this.warningText = 'BINGO!'
 
       const width = document.getElementById('box').style.width
 
@@ -97,7 +97,7 @@ export default {
       }, 800)
     },
     inputFocus () {
-      this.warningText = 'Input Your Key'
+      this.warningText = '对一下暗号'
     },
     inputBlur () {
       this.warningText = 'Konck! Knock!'
