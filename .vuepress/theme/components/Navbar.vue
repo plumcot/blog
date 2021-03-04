@@ -7,7 +7,7 @@
       class="home-link">
       <img
         class="logo"
-        v-if="$themeConfig.logo"
+        v-if="$themeConfig.logo"ÅÅ
         :src="$withBase($themeConfig.logo)"
         :alt="$siteTitle">
       <span

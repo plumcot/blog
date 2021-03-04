@@ -14,6 +14,14 @@ module.exports =
 
 
     // -- 博客设置 start --
+    "title": "I Love Zsn",
+    "description": "努力不一定成功，但放弃一定失败",
+    "dest": "dist",
+    "head" : [
+        ["link", {"rel": "icon", "href": "/favicon.ico"}],
+        ["meta", {"name": "viewport", "content": "width=device-width,initial-scale=1,user-scalable=no"}],
+        ['script', {}, `var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?a46ad829404b742959db51bb648db536";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();`]
+    ],
     'subSidebar': 'auto',//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     "search": true,
     "searchMaxSuggestions": 10,
