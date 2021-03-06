@@ -226,6 +226,35 @@ xxx.io/blog是在是不好敲也不好记，加上手中有购买的域名可以
 了一个看起来还可以的解决方案。    
 原因是跳转链接中含有中文，然后balabala，按照issue配置了一下，暂时是没有跳转到腾讯公益了。
 
+## markdown复选框插件不生效
+需要通过安装插件解决此问题
+```shell script
+npm install markdown-it-task-lists 
+```
+在`config.js`中进行配置
+
+```yaml
+"markdown": {
+    "lineNumbers": false,
+    extendMarkdown: md => {
+        md.use(require('markdown-it-task-lists'), {enabled: true});
+    }
+},
+```
+
+示例
+```markdown
+- [x] 完成
+- [ ] 待办
+```
+
+- [x] 完成
+- [ ] 待办
+
+:::tip 说明     
+中括号中间需要有一个空格     
+:::    
+
 ## 相关链接    
 [金山词霸 - 每日一句](http://open.iciba.com/dsapi/)    
 [bing - 壁纸](http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1)    

@@ -31,86 +31,86 @@
         <ModuleTransition delay="0.16">
             <div id="anchor" v-show="recoShowModule" class="home-blog-wrapper">
                 <div class="blog-list">
-                    <!-- 博客列表 -->
-                    <note-abstract
-                            :data="$recoPosts"
-                            :currentPage="currentPage"></note-abstract>
-                    <!-- 分页 -->
-                    <pagation
-                            class="pagation"
-                            :total="$recoPosts.length"
-                            :currentPage="currentPage"
-                            @getCurrentPage="getCurrentPage"/>
-                </div>
-                <div class="info-wrapper">
-                    <PersonalInfo/>
-                    <h4><i class="iconfont reco-category"></i> {{homeBlogCfg.category}}</h4>
-                    <ul class="category-wrapper">
-                        <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
-                            <router-link :to="item.path">
-                                <span class="category-name">{{ item.name }}</span>
-                                <span class="post-num" :style="{ 'backgroundColor': getOneColor() }">{{ item.pages.length }}</span>
-                            </router-link>
-                        </li>
-                    </ul>
-                    <hr>
-                    <h4 v-if="$tags.list.length !== 0"><i class="iconfont reco-tag"></i> {{homeBlogCfg.tag}}</h4>
-                    <TagList @getCurrentTag="getPagesByTags"/>
-                    <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0"><i
-                            class="iconfont reco-friend"></i> {{homeBlogCfg.friendLink}}</h4>
-                    <FriendLink/>
-                </div>
-            </div>
-        </ModuleTransition>
-
-        <ModuleTransition delay="0.24">
-            <Content v-show="recoShowModule" class="home-center" custom/>
-        </ModuleTransition>
+    <!-- 博客列表 -->
+    <note-abstract
+    :data="$recoPosts"
+    :currentPage="currentPage"></note-abstract>
+    <!-- 分页 -->
+    <pagation
+         class="pagation"
+    :total="$recoPosts.length"
+    :currentPage="currentPage"
+    @getCurrentPage="getCurrentPage"/>
     </div>
-</template>
+    <div class="info-wrapper">
+    <PersonalInfo/>
+    <h4><i class="iconfont reco-category"></i> {{homeBlogCfg.category}}</h4>
+    <ul class="category-wrapper">
+    <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
+    <router-link :to="item.path">
+    <span class="category-name">{{ item.name }}</span>
+    <span class="post-num" :style="{ 'backgroundColor': getOneColor() }">{{ item.pages.length }}</span>
+    </router-link>
+    </li>
+    </ul>
+    <hr>
+    <h4 v-if="$tags.list.length !== 0"><i class="iconfont reco-tag"></i> {{homeBlogCfg.tag}}</h4>
+    <TagList @getCurrentTag="getPagesByTags"/>
+    <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0"><i
+    class="iconfont reco-friend"></i> {{homeBlogCfg.friendLink}}</h4>
+    <FriendLink/>
+    </div>
+    </div>
+    </ModuleTransition>
 
-<script>
-    import TagList from '@theme/components/TagList'
-    import FriendLink from '@theme/components/FriendLink'
-    import NoteAbstract from '@theme/components/NoteAbstract'
-    import pagination from '@theme/mixins/pagination'
-    import ModuleTransition from '@theme/components/ModuleTransition'
-    import PersonalInfo from '@theme/components/PersonalInfo'
-    import {getOneColor} from '@theme/helpers/other'
-    import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
-    import AOS from 'aos'
+    <ModuleTransition delay="0.24">
+    <Content v-show="recoShowModule" class="home-center" custom/>
+    </ModuleTransition>
+    </div>
+    </template>
 
-    export default {
-        mixins: [pagination, moduleTransitonMixin],
-        components: {NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo},
-        data() {
-            return {
+    <script>
+     import TagList from '@theme/components/TagList'
+         import FriendLink from '@theme/components/FriendLink'
+         import NoteAbstract from '@theme/components/NoteAbstract'
+         import pagination from '@theme/mixins/pagination'
+         import ModuleTransition from '@theme/components/ModuleTransition'
+         import PersonalInfo from '@theme/components/PersonalInfo'
+         import {getOneColor} from '@theme/helpers/other'
+         import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
+         import AOS from 'aos'
+
+         export default {
+             mixins: [pagination, moduleTransitonMixin],
+    components: {NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo},
+    data() {
+    return {
                 recoShow: false,
                 currentPage: 1,
                 tags: [],
-                zh: '',
-                en: ''
-            }
-        },
-        computed: {
-            homeBlogCfg() {
-                return this.$recoLocales.homeBlog
-            },
-            actionLink() {
-                const {
-                    actionLink: link,
-                    actionText: text
-                } = this.$frontmatter
+    zh: '',
+    en: ''
+    }
+    },
+    computed: {
+    homeBlogCfg() {
+    return this.$recoLocales.homeBlog
+    },
+    actionLink() {
+    const {
+        actionLink: link,
+        actionText: text
+    } = this.$frontmatter
 
-                return {
-                    link,
-                    text
-                }
-            },
-            heroImageStyle() {
-                return this.$frontmatter.heroImageStyle || {}
-            },
-            bgImageStyle() {
+    return {
+    link,
+    text
+    }
+    },
+    heroImageStyle() {
+    return this.$frontmatter.heroImageStyle || {}
+    },
+    bgImageStyle() {
                 //   const initBgImageStyle = {
                 //     textAlign: 'center',
                 //     overflow: 'hidden',
@@ -126,62 +126,62 @@
                 //
                 //   return bgImageStyle ? { ...initBgImageStyle, ...bgImageStyle } : initBgImageStyle
             },
-            heroHeight() {
-                return document.querySelector('.hero').clientHeight
-            }
-        },
-        mounted() {
-            this.motto();
-            this.recoShow = true
-            this._setPage(this._getStoragePage())
-            AOS.init()
-        },
-        methods: {
-            motto() {
-                this.$axios.get('https://bird.ioliu.cn/v1?url=http://open.iciba.com/dsapi/').then(res => {
-                    this.zh = res.data.note;
-                    this.en = res.data.content
-                }).catch(error => {
-                    console.log(error);
-                    let res = {
+    heroHeight() {
+    return document.querySelector('.hero').clientHeight
+    }
+    },
+    mounted() {
+    this.motto();
+    this.recoShow = true
+    this._setPage(this._getStoragePage())
+    AOS.init()
+    },
+    methods: {
+    motto() {
+    this.$axios.get('https://bird.ioliu.cn/v1?url=http://open.iciba.com/dsapi/').then(res => {
+    this.zh = res.data.note;
+    this.en = res.data.content
+    }).catch(error => {
+    console.log(error);
+    let res = {
                         "zh": "愿你保持初心和善良,笑里尽是温暖与坦荡。",
                         "en": "May you keep your original heart and kindness, and smile with warmth and magnanimity."
                     };
-                    this.zh = res.content;
-                    this.en = res.content
-                })
-            },
-            // 获取当前页码
-            getCurrentPage(page) {
-                this._setPage(page)
-                setTimeout(() => {
-                    window.scrollTo(0, this.heroHeight)
-                }, 100)
-            },
-            // 根据分类获取页面数据
-            getPages() {
-                let pages = this.$site.pages
-                pages = pages.filter(item => {
-                    const {home, date} = item.frontmatter
-                    return !(home == true || date === undefined)
-                })
-                // reverse()是为了按时间最近排序排序
-                this.pages = pages.length == 0 ? [] : pages
-            },
-            getPagesByTags(tagInfo) {
-                this.$router.push({path: tagInfo.path})
-            },
-            _setPage(page) {
-                this.currentPage = page
-                this.$page.currentPage = page
-                this._setStoragePage(page)
-            },
-            getOneColor
-        }
+    this.zh = res.content;
+    this.en = res.content
+    })
+    },
+    // 获取当前页码
+    getCurrentPage(page) {
+    this._setPage(page)
+    setTimeout(() => {
+    window.scrollTo(0, this.heroHeight)
+    }, 100)
+    },
+    // 根据分类获取页面数据
+    getPages() {
+    let pages = this.$site.pages
+    pages = pages.filter(item => {
+    const {home, date} = item.frontmatter
+    return !(home == true || date === undefined)
+    })
+    // reverse()是为了按时间最近排序排序
+    this.pages = pages.length == 0 ? [] : pages
+    },
+    getPagesByTags(tagInfo) {
+    this.$router.push({path: tagInfo.path})
+    },
+    _setPage(page) {
+    this.currentPage = page
+    this.$page.currentPage = page
+    this._setStoragePage(page)
+    },
+    getOneColor
     }
-</script>
+    }
+    </script>
 
-<style lang="stylus">
+    <style lang="stylus">
     .motto {
         text-align: center
         color: white

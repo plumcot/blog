@@ -6,7 +6,7 @@ module.exports = [
     },
     {
         "text": "简历",
-        "link": "/resume/",
+        "link": "http://resume.houcy7.com",
         "icon": "reco-coding"
     },
     {

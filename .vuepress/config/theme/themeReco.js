@@ -42,8 +42,8 @@ module.exports =
         "juejin": false, //掘金
         "segmentfault": false, //思否
         "csdn": false, //CSDN
-        "wechat": "houchunyu4140", //微信
-        "qq": "1450166510" //QQ
+        "wechat": "https://tva1.sinaimg.cn/large/008eGmZEly1goaqpuypj6j30tc12l0wx.jpg", //微信
+        "qq": "https://tva1.sinaimg.cn/large/008eGmZEly1goaqpkhqyjj30u01hddlt.jpg" //QQ
     },
     // 自我介绍 end
 
@@ -56,10 +56,10 @@ module.exports =
         "requiredFields": ['nick', 'mail'], //设置必填项
     },
     // 密钥
-    "keyPage": {
-        keys: ['e10adc3949ba59abbe56e057f20f883e'], // 1.3.0 版本后需要设置为密文
-        color: '#42b983', // 登录页动画球的颜色
-        lineColor: '#42b983' // 登录页动画线的颜色
-    }
+    // "keyPage": {
+    //     keys: ['e10adc3949ba59abbe56e057f20f883e'], // 1.3.0 版本后需要设置为密文
+    //     color: '#42b983', // 登录页动画球的颜色
+    //     lineColor: '#42b983' // 登录页动画线的颜色
+    // }
 
 };

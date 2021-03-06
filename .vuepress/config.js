@@ -16,7 +16,10 @@ module.exports = {
     },
     themeConfig,
     "markdown": {
-        "lineNumbers": false
+        "lineNumbers": false,
+        extendMarkdown: md => {
+            md.use(require('markdown-it-task-lists'), {enabled: true});
+        }
     },
     // 本地跨域代理
     devServer : {

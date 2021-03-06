@@ -328,6 +328,7 @@
     .hide
       height 100vh
       overflow hidden
+      display : none
 
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
