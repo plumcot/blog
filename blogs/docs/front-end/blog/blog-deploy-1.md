@@ -26,7 +26,7 @@ sticky: 1
 第三次是发现了好看的魔改博客[后来的我们](https://zyj_yida.gitee.io/)，经过和此博客作者的交流后，得到了一些优化的思路，
 便开始了第三次搭建。
 
-此次博客基础代码源自zealsay开源的(vuepress-blog)[https://gitee.com/GodLikeZeal/vuepress_blog]，这种直接引用
+此次博客基础代码源自zealsay开源的[vuepress-blog](https://gitee.com/GodLikeZeal/vuepress_blog)，这种直接引用
 主题代码的方式着实让我这个后端小菜为之一惊，可以通过我仅有的vue知识进行微妙的调整了，具体搭建过程参考zealsay的文章[使用vuepress_blog搭建博客
 ](https://www.zealsay.com/blogs/tec/2020/20201223.html)。
 
