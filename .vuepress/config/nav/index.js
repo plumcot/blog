@@ -6,7 +6,8 @@ module.exports = [
     },
     {
         "text": "简历",
-        "link": "http://resume.houcy7.com",
+        "link": "https://www.500d.me/cvresume/9774192035/",
+        // "link": "http://resume.houcy7.com",
         "icon": "reco-coding"
     },
     {
